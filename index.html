@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SILKROAD</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        html { scroll-behavior: smooth; } /* плавная прокрутка к якорям */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f7f9fb; /* fon renk*/
+            background-color: #f7f9fb; /* фон */
         }
+        /* смещение якоря под фиксированную шапку (примерно 80px) */
+        .anchor-offset { scroll-margin-top: 90px; }
+        /* маленькая обводка слева для заголовков блоков описания */
+        .blk { border-left-width: 6px; }
     </style>
+
     <script>
         tailwind.config = {
             theme: {
@@ -28,16 +34,13 @@
             }
         }
 
-let currentSlide = 0;
+        let currentSlide = 0;
         let slides;
         let dotsContainer;
         let intervalId;
 
-        // Функция для показа конкретного слайда
         function showSlide(index) {
             if (!slides) return;
-            
-            // Логика зацикливания карусели
             if (index >= slides.length) {
                 currentSlide = 0;
             } else if (index < 0) {
@@ -45,31 +48,23 @@ let currentSlide = 0;
             } else {
                 currentSlide = index;
             }
-
-            // Скрытие всех слайдов с переходом
             slides.forEach(slide => {
                 slide.classList.remove('opacity-100');
                 slide.classList.add('opacity-0');
-                slide.style.zIndex = 10; // По умолчанию низкий z-index
+                slide.style.zIndex = 10;
             });
-            
-            // Показ текущего слайда (opacity-100)
             slides[currentSlide].classList.remove('opacity-0');
             slides[currentSlide].classList.add('opacity-100');
-            slides[currentSlide].style.zIndex = 20; // Высокий z-index для текущего
-
-            // Обновление навигационных точек
+            slides[currentSlide].style.zIndex = 20;
             updateDots();
         }
 
-        // Функция для перехода к следующему/предыдущему слайду
         function changeSlide(n) {
-            clearInterval(intervalId); // Остановка авто-слайда при ручной навигации
+            clearInterval(intervalId);
             showSlide(currentSlide + n);
-            startAutoSlide(); // Перезапуск авто-слайда
+            startAutoSlide();
         }
 
-        // Функция для обновления точек навигации
         function updateDots() {
             if (!dotsContainer) return;
             dotsContainer.innerHTML = '';
@@ -85,15 +80,13 @@ let currentSlide = 0;
                 dotsContainer.appendChild(dot);
             });
         }
-        
-        // Функция для запуска автоматического переключения
+
         function startAutoSlide() {
             intervalId = setInterval(() => {
                 showSlide(currentSlide + 1);
-            }, 5000); // Смена слайда каждые 5 секунд
+            }, 5000);
         }
 
-        // Инициализация карусели при загрузке страницы
         window.onload = function() {
             slides = document.querySelectorAll('.carousel-slide');
             dotsContainer = document.getElementById('carousel-dots');
@@ -102,184 +95,245 @@ let currentSlide = 0;
                 startAutoSlide();
             }
         };
-
-
     </script>
 </head>
 <body class="text-dark-text">
 
-    <!-- navigation -->
+    <!-- NAV (без DESCRIPTION) -->
     <header class="shadow-md bg-white sticky top-0 z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-extrabold text-primary-blue flex items-center space-x-2 cursor-pointer transition duration-300 transform hover:scale-110">
-                <!-- Изображение Логотипа -->
-                <img src="klogo.jpg" 
-                     alt="LOGO" 
-                     class="w-10 h-10 object-contain mr-1"/>
+                <img src="klogo.jpg" alt="LOGO" class="w-10 h-10 object-contain mr-1" />
                 <span>SILKROAD</span>
             </h1>
-                         
-            
-
-
             <nav class="hidden md:flex space-x-8">
                 <a href="#about" class="text-gray-600 hover:text-primary-blue transition duration-300">ABOUT</a>
                 <a href="#project_bar" class="text-gray-600 hover:text-primary-blue transition duration-300">PROJECT BAR</a>
                 <a href="#team" class="text-gray-600 hover:text-primary-blue transition duration-300">TEAM</a>
                 <a href="#hero" class="text-gray-600 hover:text-primary-blue transition duration-300">HOME</a>
             </nav>
-            <button class="md:hidden text-gray-600 hover:text-primary-blue">
-                <!-- menu-->
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            <button class="md:hidden text-gray-600 hover:text-primary-blue" aria-label="Open menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
     </header>
 
-
- <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <!-- HERO -->
         <section id="hero" class="bg-white p-8 md:p-12 rounded-2xl shadow-xl border-t-4 border-primary-blue">
             <div class="grid md:grid-cols-2 gap-12 items-center">
-                
-                <!-- Текстовое содержимое (Слева/Сверху) - ОБНОВЛЕНО ПОД ТЕМУ ТОВАРОВ -->
                 <div>
                     <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-dark-text mb-6 leading-tight">
                         FIND <span class="text-primary-blue">THE BEST QUALITY</span> AND <span class="text-accent-green"> UNIQUE PRODUCTS</span>.
                     </h2>
-                    <p class="text-xl sm:text-2xl text-gray-600 mb-8 max-w-lg">
-                        soon...
-                    </p>
-                    <button class="bg-accent-green text-white text-lg font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl hover:bg-green-700 transition duration-500 transform hover:scale-105">
+                    <p class="text-xl sm:text-2xl text-gray-600 mb-8 max-w-lg">soon...</p>
+                    <!-- КНОПКА Description ОСТАЛАСЬ ЗДЕСЬ, В HERO -->
+                    <a href="#descriptio" class="inline-block bg-accent-green text-white text-lg font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl hover:bg-green-700 transition duration-500 transform hover:scale-105">
                         CATALOG
-                    </button>
+                    </a>
                 </div>
-                
-                <!-- КАРОСЕЛЬ ИЗОБРАЖЕНИЙ (Справа/Снизу) -->
-                <div class="relative h-96 sm:h-[450px] w-full max-w-lg mx-auto"> 
+
+                <!-- КАРУСЕЛЬ -->
+                <div class="relative h-96 sm:h-[450px] w-full max-w-lg mx-auto">
                     <div id="image-carousel" class="w-full h-full relative overflow-hidden rounded-2xl shadow-2xl">
-                        
-                        <!-- Слайд 1: Folded Jeans -->
                         <div class="carousel-slide w-full h-full absolute top-0 left-0 opacity-0 transition-opacity duration-700 ease-in-out" data-index="0">
-                            <img src="adik.jpg" alt="Folded Jeans Product" class="w-full h-full object-cover">
+                            <img src="adik.jpg" alt="High quality" class="w-full h-full object-cover">
                             <div class="absolute bottom-0 w-full p-4 bg-gradient-to-t from-black/50 to-transparent text-white text-xl font-bold">High quality</div>
                         </div>
-                        
-                        <!-- Слайд 2: Colorful Towels -->
                         <div class="carousel-slide w-full h-full absolute top-0 left-0 opacity-0 transition-opacity duration-700 ease-in-out" data-index="1">
-                            <img src="oglan.jpg" alt="Colorful Towels Product" class="w-full h-full object-cover">
+                            <img src="oglan.jpg" alt="Bright colors" class="w-full h-full object-cover">
                             <div class="absolute bottom-0 w-full p-4 bg-gradient-to-t from-black/50 to-transparent text-white text-xl font-bold">Bright colors</div>
                         </div>
-                        
-                        <!-- Слайд 3: Jeans Pocket Detail -->
                         <div class="carousel-slide w-full h-full absolute top-0 left-0 opacity-0 transition-opacity duration-700 ease-in-out" data-index="2">
-                            <img src="jeans.jpg" alt="Jeans Pocket Detail" class="w-full h-full object-cover">
+                            <img src="jeans.jpg" alt="Style" class="w-full h-full object-cover">
                             <div class="absolute bottom-0 w-full p-4 bg-gradient-to-t from-black/50 to-transparent text-white text-xl font-bold">STYLE</div>
                         </div>
-
-                        <!-- Слайд 4: Jeans Pocket Detail -->
-                        <div class="carousel-slide w-full h-full absolute top-0 left-0 opacity-0 transition-opacity duration-700 ease-in-out" data-index="2">
-                            <img src="logo.jpg" alt="Jeans Pocket Detail" class="w-full h-full object-cover">
+                        <div class="carousel-slide w-full h-full absolute top-0 left-0 opacity-0 transition-opacity duration-700 ease-in-out" data-index="3">
+                            <img src="logo.jpg" alt="Logo" class="w-full h-full object-cover">
                             <div class="absolute bottom-0 w-full p-4 bg-gradient-to-t from-black/50 to-transparent text-white text-xl font-bold">LOGO</div>
                         </div>
 
-                        <!-- Навигационные точки -->
-                        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30" id="carousel-dots">
-                            <!-- Точки генерируются JavaScript -->
-                        </div>
+                        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30" id="carousel-dots"></div>
 
-                        <!-- Кнопки Навигации (Стрелки) -->
-                        <button class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/30 hover:bg-black/60 text-white p-3 rounded-full transition duration-300 z-40" onclick="changeSlide(-1)">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        <button class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/30 hover:bg-black/60 text-white p-3 rounded-full transition duration-300 z-40" onclick="changeSlide(-1)" aria-label="Prev slide">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                         </button>
-                        <button class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/30 hover:bg-black/60 text-white p-3 rounded-full transition duration-300 z-40" onclick="changeSlide(1)">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        <button class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/30 hover:bg-black/60 text-white p-3 rounded-full transition duration-300 z-40" onclick="changeSlide(1)" aria-label="Next slide">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </button>
                     </div>
                 </div>
             </div>
         </section>
 
-
-
-    
-
-        
+        <!-- ABOUT -->
         <section id="about" class="py-20">
             <h3 class="text-3xl font-bold text-center text-dark-text mb-12">ABOUT US</h3>
-            <h2 class="text-3xl font-bold text-center text-dark-text mb-12">Discover Your New Route to Quality: 
-                                Welcome to SilkRoad!</h2>
+            <h2 class="text-3xl font-bold text-center text-dark-text mb-12">
+                Discover Your New Route to Quality: Welcome to SilkRoad!
+            </h2>
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- blok 1 -->
-                <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-red-500">
-                    <div class="flex items-center mb-4">
-                        <svg class="w-8 h-8 text-red-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-red-500 blk">
+                    <div class="flex items-start mb-4">
+                        <svg class="w-8 h-8 text-red-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                         <p class="text-xl font-semibold text-dark-text">
-                                Named after the legendary Silk Road, the historic trade bridge that connected Asia 
-                                and Europe in ancient times, our online platform today forges a new connection 
-                                between Romania and Turkmenistan.We bring you the most popular clothing, shoes, and 
-                            other textile products straight from the heart of Turkmenistan.</p>
+                            Named after the legendary Silk Road... we bring popular clothing, shoes, and other textile products straight from Turkmenistan.
+                        </p>
                     </div>
-                    <p class="text-gray-600"></p>
                 </div>
-
-                <!-- blok 2  -->
-                <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-yellow-500">
-                    <div class="flex items-center mb-4">
-                        <svg class="w-8 h-8 text-yellow-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        <p class="text-xl font-semibold text-dark-text"> Every item in our selection
-                             is an embodiment of exceptional quality, renowned craftsmanship, and enduring reliability.
-                                We pride ourselves on sourcing 
-                              textiles made with meticulous care and attention to detail, guaranteeing that every purchase you make is a valuable and long-lasting addition to your wardrobe.
-
-                             </p>
+                <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-yellow-500 blk">
+                    <div class="flex items-start mb-4">
+                        <svg class="w-8 h-8 text-yellow-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        <p class="text-xl font-semibold text-dark-text">
+                            Every item embodies quality, craftsmanship, and reliability — a long-lasting addition to your wardrobe.
+                        </p>
                     </div>
-                    
                 </div>
             </div>
-           
-        </section><h2 class="text-3xl font-bold text-center text-dark-text mb-12">SilkRoad — Timeless Quality, For Your Comfort Today.</h2> 
+        </section>
 
-        <!-- project bar -->
-      <section id="project_bar" class="py-12 bg-gray-700 text-white shadow-2xl min-h-screen w-full">
-    
-    <h3 class="text-3xl font-bold text-center mb-10 px-6">Project Bar</h3>
-    
-    <div class="grid grid-cols-1 gap-6 px-6 max-w-4xl mx-auto">
-        
-        <a href="1.html" class="block">
-            <div class="bg-white text-gray-800 p-6 rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
-                <h4 class="text-xl font-semibold mb-3 flex items-center">
-                    <span class="bg-gray-900 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">1</span> Project Description
-                </h4>
-                <p class="text-gray-600"></p>
-            </div>
-        </a>
-        
-       <a href="2.html" class="block">
-            <div class="bg-white text-gray-800 p-6 rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
-                <h4 class="text-xl font-semibold mb-3 flex items-center">
-                    <span class="bg-gray-900 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">2</span> 
-                </h4>
-                <p class="text-gray-600"></p>
-            </div>
-        </a>
+        <h2 class="text-3xl font-bold text-center text-dark-text mb-12">
+            SilkRoad — Timeless Quality, For Your Comfort Today.
+        </h2>
 
-        <a href="3.html" class="block">
-            <div class="bg-white text-gray-800 p-6 rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
-                <h4 class="text-xl font-semibold mb-3 flex items-center">
-                    <span class="bg-gray-900 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">3</span> 
-                </h4>
-                <p class="text-gray-600"></p>
+        <!-- PROJECT BAR -->
+        <section id="project_bar" class="py-12 bg-gray-700 text-white shadow-2xl min-h-screen w-full">
+            <h3 class="text-3xl font-bold text-center mb-10 px-6">Project Bar</h3>
+            <div class="grid grid-cols-1 gap-6 px-6 max-w-4xl mx-auto">
+                <a href="#description" class="block"><!-- descrip knopka -->
+                    <div class="bg-white text-gray-800 p-6 rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+                        <h4 class="text-xl font-semibold mb-3 flex items-center">
+                            <span class="bg-gray-900 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">1</span>
+                            Project Description
+                        </h4>
+                        <p class="text-gray-600"></p>
+                    </div>
+                </a>
+                <a href="#validation" class="block">
+                    <div class="bg-white text-gray-800 p-6 rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+                        <h4 class="text-xl font-semibold mb-3 flex items-center">
+                            <span class="bg-gray-900 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">2</span>
+                                    Validation
+                        </h4>
+                        <p class="text-gray-600"></p>
+                    </div>
+                </a>
+                <a href="3.html" class="block">
+                    <div class="bg-white text-gray-800 p-6 rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+                        <h4 class="text-xl font-semibold mb-3 flex items-center">
+                            <span class="bg-gray-900 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">3</span>
+                        </h4>
+                        <p class="text-gray-600"></p>
+                    </div>
+                </a>
             </div>
-        </a>
-        
-    </div>
-</section>
+        </section>
 
-        <!-- topar -->
+        <!-- DESCRIPTION (якорь, к которому ведёт кнопка в hero) -->
+        <section id="description" class="py-16 anchor-offset">
+            <div class="max-w-4xl mx-auto space-y-10">
+                <div>
+                    <h3 class="text-2xl font-bold text-dark-text mb-3">DESCRIPTION</h3>
+                    <h3 class="text-2xl font-bold text-dark-text mb-3">The Problem</h3>
+                    <p class="text-gray-700">
+                        People in Romania who want authentic Turkmen textiles struggle with availability, high import costs, and quality uncertainty.
+                        Meanwhile, Turkmen producers lack access to EU markets, branding, and logistics compliance.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-dark-text mb-3">Our Solution</h3>
+                    <p class="text-gray-700 mb-3">
+                        A dedicated online platform that curates and delivers Turkmen textiles locally in Romania with transparent pricing,
+                        verified quality, and fast delivery.
+                    </p>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-1">
+                        <li>Curated catalog: Cotton jeans and towels and fashionable leather shoes.</li>
+                        <li>Product pages with materials, sizes, care instructions, and photos</li>
+                        <li>Secure checkout in RON with invoices and tracking</li>
+                        <li>Courier & locker shipping, easy returns</li>
+                        <li>Educational storytelling about Turkmen craft</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-dark-text mb-3">Phase 2 – Marketplace Upgrade</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-1">
+                        <li>Vendor onboarding (Turkmen producers)</li>
+                        <li>Ratings, reviews, wishlists, and discount systems</li>
+                        <li>Bundles & promotional campaigns</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-dark-text mb-3">Customer Segments</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-1">
+                        <li><span class="font-semibold">Primary:</span> Turkmen people in Romania & international students (18–35)</li>
+                        <li><span class="font-semibold">Secondary:</span> Romanian consumers (18–55) valuing natural fibers</li>
+                        <li><span class="font-semibold">Early B2B:</span> Small boutiques seeking unique textiles</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-dark-text mb-3">Competition</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-1">
+                        <li>General marketplaces: eMAG, Etsy</li>
+                        <li>Local Romanian textile brands</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-dark-text mb-3">Our Advantages</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-1">
+                        <li>Niche focus & authenticity</li>
+                        <li>Verified quality and materials</li>
+                        <li>Strong brand story and cultural trust</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-dark-text mb-3">Key Metrics</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-1">
+                        <li>Waitlist signups & email subscribers</li>
+                        <li>Conversion rate & Average Order Value</li>
+                        <li>Repeat purchase rate</li>
+                        <li>Order fulfillment time</li>
+                        <li>Number of verified suppliers</li>
+                        <li>Customer satisfaction scores</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-dark-text mb-3">Cost Structure</h3>
+                    <p class="text-gray-700"><span class="font-semibold">Fixed Costs:</span> logistic fee, advertisement, marketing.</p>
+                    <p class="text-gray-700"><span class="font-semibold">Variable Costs:</span> cost of goods, logistic fee.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-dark-text mb-3">Revenue Streams</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-1">
+                        <li>Direct product sales</li>
+                        <li>Marketplace commissions (Phase 2)</li>
+                        <li>Private-label textile collections</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+         <!-- validation (якорь, к которому ведёт кнопка в hero) -->
+        <section id="validation" class="py-16 anchor-offset">
+            <div class="max-w-4xl mx-auto space-y-10">
+                <div>
+                    <h3 class="text-2xl font-bold text-dark-text mb-3">VALIDATION 1</h3>
+                    <p class="text-gray-700">
+                        validation
+                    </p>
+                </div>
+
+        <!-- TEAM -->
         <section id="team" class="py-20">
             <h3 class="text-3xl font-bold text-center text-dark-text mb-12">OUR TEAM</h3>
             <div class="grid md:grid-cols-4 gap-8">
-                <!-- card -->
                 <div class="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-100">
                     <p class="text-lg font-semibold text-primary-blue">Maksad Ermetov</p>
                     <p class="text-sm font-medium text-accent-green mb-2">IT and development</p>
@@ -288,23 +342,20 @@ let currentSlide = 0;
                 <div class="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-100">
                     <p class="text-lg font-semibold text-primary-blue">Gurban Choganov</p>
                     <p class="text-sm font-medium text-accent-green mb-2">Data analyst</p>
-                    <p class="text-xs text-gray-500 break-words"></p>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-100">
                     <p class="text-lg font-semibold text-primary-blue">Oraz Makyyev</p>
-                    <p class="text-sm font-medium text-accent-green mb-2"> Frontend Developer </p>
-                    <p class="text-xs text-gray-500 break-words"></p>
+                    <p class="text-sm font-medium text-accent-green mb-2">Frontend Developer</p>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-100">
                     <p class="text-lg font-semibold text-primary-blue">Ogulnyyaz Amanova</p>
-                    <p class="text-sm font-medium text-accent-green mb-2"> Product Manager </p>
-                    <p class="text-xs text-gray-500 break-words"></p>
+                    <p class="text-sm font-medium text-accent-green mb-2">Product Manager</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer class="bg-dark-text text-white py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p>&copy; 2025 ASC.</p>
