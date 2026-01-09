@@ -96,6 +96,20 @@
             }
         };
     </script>
+
+    <!-- PostHog Analytics (Milestone 5) -->
+    <script>
+        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){
+        function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){
+        t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",
+        p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);
+        var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){
+        var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){
+        return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing opt_in_capturing has_opted_out_capturing reset get_distinct_id get_property on off".split(" "),
+        n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+        posthog.init('PH_PROJECT_API_KEY', {api_host:'https://app.posthog.com'});
+    </script>
+
 </head>
 <body class="text-dark-text">
 
@@ -236,7 +250,29 @@
                         <p class="text-gray-600"></p>
                     </div>
                 </a>
-            </div>
+
+                <a href="#milestone5" class="block">
+                    <div class="bg-white text-gray-800 p-6 rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+                        <h4 class="text-xl font-semibold mb-3 flex items-center">
+                            <span class="bg-gray-900 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">5</span>
+                            Lead Generation & Analytics
+                        </h4>
+                        <p class="text-gray-600">Newsletter leads, PostHog funnels, session replay, and campaign results.</p>
+                    </div>
+                </a>
+            
+                <a href="#milestone6" class="block">
+                    <div class="bg-white text-gray-800 p-6 rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+                        <h4 class="text-xl font-semibold mb-3 flex items-center">
+                            <span class="bg-gray-900 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">6</span>
+                            Market Research
+                        </h4>
+                        <p class="text-gray-600">
+                            Target market size, competitors, pricing strategy (20 LEI), revenue & profitability forecast.
+                        </p>
+                    </div>
+                </a>
+</div>
         </section>
 
         <!-- DESCRIPTION (якорь, к которому ведёт кнопка в hero) -->
@@ -750,7 +786,8 @@
           <li><strong>Last Name:</strong> Said</li>
           <li><strong>Age:</strong> 30</li>
           <li><strong>City:</strong> Originally from Syria, currently in Romania</li>
-          <li><strong>Status / Occupation:</strong> Mechatronics Engineer, Master's student in Mechanical Engineering</li>
+          <li><strong>Status / Occupation:</strong> Mechatronics Engineer, Master's student 
+in Mechanical Engineering</li>
           <li><strong>Shopping Interests:</strong> Unique, high-quality textile products, clothing, and international brands</li>
           <li><strong>Shopping Behavior:</strong> Shops mostly via phone; checks customer reviews with real photos before purchasing</li>
           <li><strong>Additional Notes:</strong>
@@ -763,6 +800,266 @@
 
   </div>
 </section>
+<!-- milestone 5 -->
+<section id="milestone5" class="py-16 anchor-offset">
+  <div class="max-w-5xl mx-auto space-y-12">
+
+    <!-- Header -->
+    <header>
+      <h3 class="text-3xl font-bold text-gray-900 mb-2">MILESTONE 5 — Lead Generation Campaign</h3>
+      <p class="text-gray-700">
+        For <b>SILKROAD</b> (fashion / clothing e-commerce) we ran a lead-generation campaign to collect early users
+        and track how visitors move from product interest to registration and add-to-cart.
+      </p>
+    </header>
+
+    <!-- 1) Lead collection -->
+    <section class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
+      <h4 class="text-2xl font-semibold text-gray-900 mb-2">1) Lead collection (Newsletter / Early access)</h4>
+      <p class="text-gray-700 mb-4">
+        We added a newsletter signup section on the landing page to collect <b>email</b> (required) and <b>phone</b> (optional).
+        Users get launch updates, new drops, and an early-bird discount.
+      </p>
+
+      <!-- IMPORTANT: Replace FORM_URL with your Formspree endpoint -->
+      <div class="mt-4">
+        <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+          <h5 class="text-lg font-semibold text-dark-text mb-2">Evidence: Login / Registration screen</h5>
+          <p class="text-gray-700 mb-4">
+            SILKROAD is an одежда e-commerce. For Milestone 5 we focus on the real conversion actions:
+            registration, login, product views and add-to-cart.
+          </p>
+          <figure class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+            <img src="mil53.JPG" alt="SILKROAD login screen" class="w-full h-auto">
+            <figcaption class="text-sm text-gray-600 p-3">Screenshot — Login page (used for documenting the conversion flow).</figcaption>
+          </figure>
+        </div>>
+      </div>
+    </section>
+
+    <!-- 2) Analytics -->
+    <section class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
+      <h4 class="text-2xl font-semibold text-gray-900 mb-2">2) Analytics (PostHog)</h4>
+      <p class="text-gray-700 mb-4">
+        We use PostHog for <b>Web analytics</b> (visits/pageviews), <b>Product analytics</b> (conversion funnels),
+        and <b>Session replay</b> (observe user behavior on registration and product pages).
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+          <h5 class="text-lg font-semibold text-gray-900 mb-2">Tracked events</h5>
+          <ul class="list-disc pl-6 text-gray-700 space-y-1">
+            <li><code>lead_form_started</code>, <code>lead_submitted</code></li>
+            <li><code>register_attempt</code>, <code>user_registered</code>, <code>user_verified</code></li>
+            <li><code>user_logged_in</code>, <code>user_logged_out</code></li>
+            <li><code>product_viewed</code>, <code>product_added_to_cart</code></li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+          <h5 class="text-lg font-semibold text-gray-900 mb-2">Conversion funnels</h5>
+          <ul class="list-disc pl-6 text-gray-700 space-y-1">
+            <li><b>Lead funnel:</b> <code>$pageview</code> → <code>lead_form_started</code> → <code>lead_submitted</code></li>
+            <li><b>Shop funnel:</b> <code>product_viewed</code> → <code>product_added_to_cart</code> → <code>user_registered</code></li>
+          </ul>
+          <p class="text-gray-600 mt-3">
+            Session replay helps identify drop-off points (registration friction, unclear sizing, cart abandonment).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <!-- 5) Evidence screenshots -->
+    <section class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
+      <h4 class="text-2xl font-semibold text-gray-900 mb-2">3) Evidence (screenshots)</h4>
+      <p class="text-gray-700 mb-4">
+        Evidence screenshots of analytics tracking (events and totals). Put <b>mil5.JPG</b> and <b>mil52.JPG</b> in the same folder as index.html.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <figure class="bg-gray-50 border border-gray-200 rounded-xl p-4">
+          <img src="mil5.JPG" alt="Milestone 5 chart" class="w-full h-auto rounded-lg shadow-md">
+          <figcaption class="text-sm text-gray-600 mt-2">Screenshot 1 — events chart</figcaption>
+        </figure>
+
+        <figure class="bg-gray-50 border border-gray-200 rounded-xl p-4">
+          <img src="mil52.JPG" alt="Milestone 5 detailed results" class="w-full h-auto rounded-lg shadow-md">
+          <figcaption class="text-sm text-gray-600 mt-2">Screenshot 2 — detailed results</figcaption>
+        </figure>
+      </div>
+    </section>
+
+  <
+
+<!-- MILESTONE 6 -->
+        <section id="milestone6" class="py-16 anchor-offset">
+            <div class="max-w-5xl mx-auto space-y-10">
+
+                <header>
+                    <h3 class="text-3xl font-bold text-dark-text mb-2">MILESTONE 6 — Market Research & Pricing</h3>
+                    <p class="text-gray-700">
+                       <section class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 space-y-4">
+                       <p class="text-gray-700 mb-4"> The business intends to enter the Romanian market with a product portfolio consisting of men’s denim jeans, bathroom towels, bed sheet sets, and men’s leather footwear. These products belong to the wider apparel, footwear, and home textile retail market in Romania. Demand in these categories is driven primarily by utility, quality, price sensitivity, durability, and household consumption patterns, as opposed to premium fashion or luxury motives.
+                   <br>Romania: A High-Growth SEE E-Commerce Market
+                        Romania’s e-commerce is expanding at one of the fastest rates in Central and Eastern Europe. The market is projected to reach US $8.3 billion by 2025, with a 7.5% CAGR through 2029.
+                          With 94% internet access but only 60% of users shopping online, Romania shows a huge growth gap — signaling untapped potential for digital adoption and global players.
+                          The local champion eMAG holds ~66% market share, combining logistics, trust, and product depth. At the same time, AliExpress (US $298M) and Trendyol (US $242M) are gaining traction among younger, urban shoppers.
+                   </section>
+                      </p>
+                </header>
+
+                <!-- 1) Target Market -->
+                <section class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 space-y-4">
+                    <h4 class="text-2xl font-semibold text-dark-text">1) Target Market Size (Romania)</h4>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="rounded-xl border border-gray-200 p-4 bg-gray-50">
+                            <h5 class="font-semibold text-dark-text mb-2">Geographic Scope</h5>
+                            <ul class="list-disc pl-6 text-gray-700 space-y-1">
+                                <li><b>Primary:</b> Romania</li>
+                                <li><b>Future expansion:</b> EU (Phase 2)</li>
+                            </ul>
+                        </div>
+
+                        <div class="rounded-xl border border-gray-200 p-4 bg-gray-50">
+                            <h5 class="font-semibold text-dark-text mb-2">Sub-markets</h5>
+                            <ul class="list-disc pl-6 text-gray-700 space-y-1">
+                                <li><b>Online shoppers</b> looking for affordable fashion</li>
+                                <li><b>Customers</b> interested in unique textiles & better quality</li>
+                                <li><b>B2B (future):</b> small boutiques & retailers</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                   
+                </section>
+
+                <!-- 2) Competitors -->
+                <section class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 space-y-4">
+                    <h4 class="text-2xl font-semibold text-dark-text">2) Competitors & Market Players</h4>
+
+                    <p class="text-gray-700">
+                        SILKROAD competes with large cross-border platforms and local online stores. Our niche is
+                        curated textile/clothing products with clearer sourcing and product details.
+                    </p>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="rounded-xl border border-gray-200 p-4">
+                            <h5 class="font-semibold text-dark-text mb-2">Shein</h5>
+                            <p class="text-gray-700 text-sm">Fast fashion, mass catalog, aggressive pricing.</p>
+                        </div>
+                        <div class="rounded-xl border border-gray-200 p-4">
+                            <h5 class="font-semibold text-dark-text mb-2">Temu</h5>
+                            <p class="text-gray-700 text-sm">Very low prices, discount-driven, quality perception risk.</p>
+                        </div>
+                        <div class="rounded-xl border border-gray-200 p-4">
+                            <h5 class="font-semibold text-dark-text mb-2">Trendyol</h5>
+                            <p class="text-gray-700 text-sm">Mid-range pricing, broad assortment.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6 pt-2">
+                        <div class="rounded-xl border border-gray-200 p-4 bg-gray-50">
+                            <h5 class="font-semibold text-dark-text mb-2">Approx. number of players</h5>
+                            <ul class="list-disc pl-6 text-gray-700 space-y-1">
+                                <li>Large platforms: <b>3–5</b></li>
+                                <li>Local online fashion stores: <b>50+</b></li>
+                                <li>Niche small sellers: <b>10–15</b></li>
+                            </ul>
+                        </div>
+
+                        <div class="rounded-xl border border-gray-200 p-4 bg-gray-50">
+                            <h5 class="font-semibold text-dark-text mb-2">Market structure (approx.)</h5>
+                            <ul class="list-disc pl-6 text-gray-700 space-y-1">
+                                <li>Large platforms: <b>~70%</b></li>
+                                <li>Local stores: <b>~25%</b></li>
+                                <li>Niche sellers: <b>~5%</b></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+              
+
+               
+
+                <!-- 3) Market share & value -->
+                <section class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 space-y-4">
+                    <h4 class="text-2xl font-semibold text-dark-text">3) Market Share & Value Forecast (Years 1–5)</h4>
+
+                    <p class="text-gray-700">
+                        Conservative forecast based on niche positioning and gradual brand trust.
+                        Assumption: total market value (RO) ~ <b>300M LEI/year</b>.
+                    </p>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border border-gray-200 rounded-xl overflow-hidden">
+                            <thead class="bg-gray-50">
+                                <tr class="text-sm text-gray-600">
+                                    <th class="p-3 border-b">Year</th>
+                                    <th class="p-3 border-b">Visitors</th>
+                                    <th class="p-3 border-b">Buyers</th>
+                                    <th class="p-3 border-b">SOM</th>
+                                    <th class="p-3 border-b">Revenue (RON)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-700">
+                                <tr class="border-b">
+                                    <td class="p-3">Year 1</td>
+                                    <td class="p-3">15000-20000</td>
+                                    <td class="p-3">~150-250</td>
+                                    <td class="p-3">0.01%</td>
+                                    <td class="p-3">24000-40000</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="p-3">Year 2</td>
+                                    <td class="p-3">30000-45000</td>
+                                    <td class="p-3">~300-600</td>
+                                    <td class="p-3">0.02%</td>
+                                    <td class="p-3">48000-96000</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="p-3">Year 3</td>
+                                    <td class="p-3">60000-90000</td>
+                                    <td class="p-3">~900-1500</td>
+                                    <td class="p-3">0.03%</td>
+                                    <td class="p-3">144000-240000</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="p-3">Year 4</td>
+                                    <td class="p-3">125000-175000</td>
+                                    <td class="p-3">~2000-3000</td>
+                                    <td class="p-3">0.05%</td>
+                                    <td class="p-3">320000-480000</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">Year 5</td>
+                                    <td class="p-3">200000-275000</td>
+                                    <td class="p-3">~3500-5000</td>
+                                    <td class="p-3">0.07%</td>
+                                    <td class="p-3">560000-800000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <section class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 space-y-4"> The Romanian e-commerce market provides a powerful launchpad for SilkRoad, projected to exceed €8 Billion in 2025 with a sustained 7.5% annual growth rate (CAGR). Our financial model leverages this momentum, forecasting a realistic trajectory from ~40,000 RON in Year 1 to 800,000 RON by Year 5 as we capture just 0.07% of the addressable market. By bridging the gap between low-quality synthetics and expensive luxury with our Direct-to-Consumer model, SilkRoad is a commercially validated, high-margin project ready to capitalize on Romania's expanding digital economy.</section>
+                        
+                        
+                   
+                </section>
+
+                
+
+            </div>
+        </section>
+
+      </div>
+</section>
+
+
 
             
         <!-- TEAM -->
@@ -797,6 +1094,28 @@
             <p class="text-sm mt-2 text-gray-400">Support: <a href="silkroadsupport.ro" class="text-primary-blue hover:underline">silkroadsupport.ro</a></p>
         </div>
     </footer>
+
+
+    <!-- Milestone 5 tracking for newsletter lead form -->
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Basic CTA tracking for Milestone 5 (no newsletter form)
+  document.querySelectorAll("a, button").forEach((el) => {
+    const text = (el.textContent || "").toLowerCase();
+    const href = (el.getAttribute("href") || "").toLowerCase();
+
+    if (text.includes("login") || href.includes("login")) {
+      el.addEventListener("click", () => posthog.capture("cta_login_clicked"));
+    }
+    if (text.includes("register") || href.includes("register")) {
+      el.addEventListener("click", () => posthog.capture("cta_register_clicked"));
+    }
+    if (href.includes("#milestone5") || href.includes("milestone5")) {
+      el.addEventListener("click", () => posthog.capture("cta_milestone5_opened"));
+    }
+  });
+});
+</script>
 
 </body>
 </html>
