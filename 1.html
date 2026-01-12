@@ -1,109 +1,189 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Milestone 1 — SilkRoad</title>
-  
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SILKROAD — Milestone 5</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f9f9f9; color: #333; }
-    header { background-color: #004d40; color: white; padding: 20px; text-align: center; }
-    section { padding: 20px; max-width: 1000px; margin: auto; background-color: white; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    h2 { color: #004d40; }
-    ul { margin-left: 20px; }
-    .highlight { font-weight: bold; color: #00796b; }
+    body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial;background:#0b0f14;color:#e8eef8}
+    .wrap{max-width:1100px;margin:40px auto;padding:0 16px}
+    a{color:#9db0c9}
+    .btn{display:inline-block;padding:8px 10px;border-radius:12px;border:1px solid #223044;background:#0a121c;color:#e8eef8;text-decoration:none}
+    .card{border:1px solid #1f2a3a;border-radius:16px;background:#0f1621;padding:18px;margin-top:14px}
+    h1{margin:0 0 6px 0}
+    .muted{color:#9db0c9}
+    .pill{display:inline-block;padding:4px 10px;border:1px solid #223044;border-radius:999px;background:#0a121c;color:#9db0c9;font-size:12px;margin-right:8px}
+    .grid{display:grid;grid-template-columns:1fr;gap:14px}
+    @media(min-width:900px){.grid{grid-template-columns:2fr 1fr}}
+    .shot{border:1px solid #1f2a3a;border-radius:14px;overflow:hidden;background:#0a121c}
+    .shot img{width:100%;display:block}
+    .cap{padding:10px 12px;color:#9db0c9;font-size:12px;border-top:1px solid #1f2a3a}
+    table{width:100%;border-collapse:collapse;margin-top:10px}
+    th,td{border-bottom:1px solid #1f2a3a;padding:10px;text-align:left}
+    th{color:#9db0c9;font-size:12px}
+    ul{margin:8px 0 0 18px}
+    .kpi{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .kpi .box{border:1px solid #223044;background:#0a121c;border-radius:14px;padding:12px;min-width:190px}
+    .kpi .num{font-size:20px;font-weight:700}
+    .kpi .lbl{color:#9db0c9;font-size:12px;margin-top:4px}
   </style>
 </head>
 <body>
-  <header>
-    <h1>Description </h1>
-    <h2>SilkRoad — Timeless Quality, For Your Comfort Today.</h2>
-  </header>
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;">
+      <div>
+        <h1>Milestone 5 — Lead generation campaign</h1>
+        <div class="muted">SILKROAD (fashion store): newsletter leads + PostHog analytics + traffic channels + documentation.</div>
+      </div>
+      <a class="btn" href="./index.html">← Back</a>
+    </div>
 
-  <section>
-    <h2>The Problem</h2>
-    <p>People in Romania who want authentic Turkmen textiles struggle with availability, high import costs, and quality uncertainty. Meanwhile, Turkmen producers lack access to EU markets, branding, and logistics compliance.</p>
-  </section>
+    <div class="card">
+      <span class="pill">Product</span><span class="pill">Fashion / Clothing</span><span class="pill">Lead Gen</span>
+      <h2 style="margin-top:10px;">Goal</h2>
+      <p class="muted">
+        Collect early leads for SILKROAD and understand how users behave on our landing page:
+        which products they view, whether they add items to cart, and where they drop off in registration.
+      </p>
+    </div>
 
-  <section>
-    <h2>Our Solution</h2>
-    <p>A dedicated online platform that curates and delivers Turkmen textiles locally in Romania with transparent pricing, verified quality, and fast delivery.</p>
-    <ul>
-      <li>Curated catalog:  Cotton jeans and towels and fashionable leather shoes,.</li>
-      <li>Product pages with materials, sizes, care instructions, and photos</li>
-      <li>Secure checkout in RON with invoices and tracking</li>
-      <li>Courier & locker shipping, easy returns</li>
-    
-      <li>Educational storytelling about Turkmen craft</li>
-    </ul>
-  </section>
+    <div class="card">
+      <h2>1) Lead collection section (Newsletter)</h2>
+      <p class="muted">
+        We added a newsletter subscription section on the landing page: “Get early access to new drops”.
+        Visitors can leave an email (required) and phone number (optional) to receive new arrivals, launch updates,
+        and an early-bird discount.
+      </p>
+      <ul>
+        <li><b>CTA:</b> “Subscribe & get 10% off”</li>
+        <li><b>Collected data:</b> email (required), phone (optional)</li>
+        <li><b>Tool:</b> Formspree (form submissions)</li>
+      </ul>
+    </div>
 
-  <section>
-    <h2>Phase 2 – Marketplace Upgrade</h2>
-    <ul>
-      <li>Vendor onboarding (Turkmen producers)</li>
-      <li>Ratings, reviews, wishlists, and discount systems</li>
-      <li>Bundles & promotional campaigns</li>
-    </ul>
-  </section>
+    <div class="card">
+      <h2>2) Analytics setup (PostHog)</h2>
+      <p class="muted">
+        We use PostHog for Web analytics (visitors/pageviews), Product analytics (conversion funnels),
+        and Session replay (observe real user sessions and friction points).
+      </p>
 
-  <section>
-    <h2>Customer Segments</h2>
-    <ul>
-      <li><span class="highlight">Primary:</span> Turkmen people in Romania & international students (18–35)</li>
-      <li><span class="highlight">Secondary:</span> Romanian consumers (18–55) valuing natural fibers</li>
-      <li><span class="highlight">Early B2B:</span> Small boutiques seeking unique textiles</li>
-    </ul>
-  </section>
+      <h3>Tracked events</h3>
+      <ul>
+        <li><b>Lead:</b> <code>lead_form_started</code>, <code>lead_submitted</code></li>
+        <li><b>Account:</b> <code>register_attempt</code>, <code>user_registered</code>, <code>user_verified</code>, <code>user_logged_in</code>, <code>user_logged_out</code></li>
+        <li><b>Products:</b> <code>product_viewed</code>, <code>product_added_to_cart</code> (optional: <code>checkout_started</code>, <code>purchase_completed</code>)</li>
+      </ul>
 
-  <section>
-    <h2>Competition</h2>
-    <ul>
-      <li>General marketplaces: eMAG, Etsy</li>
-      <li>Local romanian textile brands</li>
-      <li Temu, Trendyol, Shein, Zolando AliExpress</li>
-    </ul>
-  </section>
+      <h3>Funnels</h3>
+      <ul>
+        <li><b>Lead funnel:</b> <code>$pageview</code> → <code>lead_form_started</code> → <code>lead_submitted</code></li>
+        <li><b>Shop funnel:</b> <code>product_viewed</code> → <code>product_added_to_cart</code> → <code>user_registered</code> (→ <code>checkout_started</code>)</li>
+      </ul>
 
-  <section>
-    <h2>Our Advantages</h2>
-    <ul>
-      <li>Niche focus & authenticity</li>
-      <li>Verified quality and materials</li>
+      <div class="kpi">
+        <div class="box">
+          <div class="num">Newsletter</div>
+          <div class="lbl">Lead collection CTA</div>
+        </div>
+        <div class="box">
+          <div class="num">Cart</div>
+          <div class="lbl">Main purchase intent</div>
+        </div>
+        <div class="box">
+          <div class="num">Replay</div>
+          <div class="lbl">See user friction</div>
+        </div>
+      </div>
+    </div>
 
-      <li>Strong brand story and cultural trust</li>
-    
-    </ul>
-  </section>
+    <div class="card">
+      <h2>3) Bringing people to the landing page</h2>
+      <p class="muted">
+        We shared SILKROAD in social channels where fashion shoppers hang out and compared which channel produced
+        more product views, cart adds and newsletter subscriptions.
+      </p>
+      <ul>
+        <li>Facebook post: <a href="PASTE_FACEBOOK_PERMALINK" target="_blank">permalink</a></li>
+        <li>Facebook group post: <a href="PASTE_FACEBOOK_GROUP_PERMALINK" target="_blank">permalink</a></li>
+        <li>Reddit post: <a href="PASTE_REDDIT_PERMALINK" target="_blank">permalink</a></li>
+      </ul>
+      <p class="muted">On Fiki we included screenshots of each post and their permalinks.</p>
+    </div>
 
-  <section>
-    <h2>Key Metrics</h2>
-    <ul>
-      <li>Waitlist signups & email subscribers</li>
-      <li>Conversion rate & Average Order Value</li>
-      <li>Repeat purchase rate</li>
-      <li>Order fulfillment time</li>
-      <li>Number of verified suppliers</li>
-      <li>Customer satisfaction scores</li>
-    </ul>
-  </section>
+    <div class="card">
+      <h2>4) Channel comparison</h2>
+      <p class="muted">
+        We compared channels using PostHog: visits, newsletter submissions, product views and add-to-cart conversions.
+      </p>
 
-  <section>
-    <h2>Cost Structure</h2>
-    <p><strong>Fixed Costs:</strong> logistic fee, advertisiment, marketing.</p>
-    <p><strong>Variable Costs:</strong> cost of goods, logistic fee.</p>
-  </section>
+      <table>
+        <thead>
+          <tr>
+            <th>Channel</th>
+            <th>Visits</th>
+            <th>Leads (newsletter)</th>
+            <th>Add-to-cart</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Facebook</td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td>General audience, moderate engagement</td>
+          </tr>
+          <tr>
+            <td>Facebook groups</td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td>More targeted, higher intent</td>
+          </tr>
+          <tr>
+            <td>Reddit</td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td>Good feedback, variable conversion</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <section>
-    <h2>Revenue Streams</h2>
-    <ul>
-      <li>Direct product sales</li>
-      
-      
-      <li>Marketplace commissions (Phase 2)</li>
-      <li>Private-label textile collections</li>
-    </ul>
-  </section>
+      <p class="muted" style="margin-top:10px">
+        <b>Best channel:</b> ________ (fill after you check PostHog numbers).<br/>
+        Reason: highest lead conversion and the most “product_viewed → added_to_cart” actions.
+      </p>
+    </div>
 
+    <div class="card">
+      <h2>5) Evidence (screenshots)</h2>
+      <p class="muted">
+        Below are screenshots from our analytics view (events & totals) used as proof of tracking.
+      </p>
+      <div class="grid">
+        <div class="shot">
+          <img src="./assets/mil5.JPG" alt="Analytics chart screenshot">
+          <div class="cap">Screenshot 1 — events chart</div>
+        </div>
+        <div class="shot">
+          <img src="./assets/mil52.JPG" alt="Analytics detailed results screenshot">
+          <div class="cap">Screenshot 2 — detailed results table</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Learnings & next steps</h2>
+      <ul>
+        <li>Improve the registration UX (reduce steps, clearer validation messages).</li>
+        <li>Add trust signals (shipping/returns, secure checkout) near CTA.</li>
+        <li>Test different CTA offers (10% off vs free shipping vs early access).</li>
+        <li>Use session replays to identify the biggest drop-off point and fix it.</li>
+      </ul>
+    </div>
+  </div>
 </body>
 </html>

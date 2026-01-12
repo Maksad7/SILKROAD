@@ -109,6 +109,81 @@
         n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
         posthog.init('PH_PROJECT_API_KEY', {api_host:'https://app.posthog.com'});
     </script>
+<script>
+  let m7Current = 0;
+  let m7Slides = [];
+  let m7DotsContainer;
+  let m7IntervalId;
+  const m7Captions = [
+    'MVP — product page: premium jeans with realistic price.',
+    'MVP — second product page: denim jacket.',
+    'MVP — shopping cart with totals and quantity controls.',
+    'MVP — checkout / order confirmation screen.'
+  ];
+
+  function m7ShowSlide(index) {
+    if (!m7Slides.length) return;
+
+    if (index >= m7Slides.length) {
+      m7Current = 0;
+    } else if (index < 0) {
+      m7Current = m7Slides.length - 1;
+    } else {
+      m7Current = index;
+    }
+
+    m7Slides.forEach((slide, i) => {
+      slide.classList.toggle('opacity-0', i !== m7Current);
+      slide.classList.toggle('opacity-100', i === m7Current);
+    });
+
+    // подпись
+    const captionEl = document.getElementById('m7-caption');
+    if (captionEl && m7Captions[m7Current]) {
+      captionEl.textContent = m7Captions[m7Current];
+    }
+
+    // точки
+    if (m7DotsContainer) {
+      m7DotsContainer.innerHTML = '';
+      m7Slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className =
+          'w-3 h-3 rounded-full mx-1 transition duration-300 ' +
+          (i === m7Current ? 'bg-white' : 'bg-gray-500 hover:bg-gray-300');
+        dot.onclick = () => {
+          clearInterval(m7IntervalId);
+          m7ShowSlide(i);
+          m7StartAuto();
+        };
+        m7DotsContainer.appendChild(dot);
+      });
+    }
+  }
+
+  function m7ChangeSlide(delta) {
+    clearInterval(m7IntervalId);
+    m7ShowSlide(m7Current + delta);
+    m7StartAuto();
+  }
+
+  function m7StartAuto() {
+    m7IntervalId = setInterval(() => {
+      m7ShowSlide(m7Current + 1);
+    }, 6000);
+  }
+
+  window.addEventListener('load', () => {
+    m7Slides = Array.from(document.querySelectorAll('.m7-slide'));
+    m7DotsContainer = document.getElementById('m7-dots');
+    if (m7Slides.length) {
+      // начальное состояние
+      m7Slides.forEach(s => s.classList.add('opacity-0'));
+      m7ShowSlide(0);
+      m7StartAuto();
+    }
+  });
+</script>
 
 </head>
 <body class="text-dark-text">
@@ -270,6 +345,28 @@
                        
                     </div>
                 </a>
+                
+<!-- MILESTONE 7 – MVP -->
+<a href="#milestone7" class="block">
+  <div class="bg-white text-gray-800 p-6 rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+    <h4 class="text-xl font-semibold mb-3 flex items-center">
+      <span class="bg-gray-900 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">7</span>
+     MVP
+    </h4>
+     </div>
+</a>
+<!-- MILESTONE 8 – First Sale & User Feedback -->
+<a href="#milestone8" class="block">
+  <div class="bg-white text-gray-800 p-6 rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+    <h4 class="text-xl font-semibold mb-3 flex items-center">
+      <span class="bg-gray-900 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">8</span>
+      First Sale & Feedback
+    </h4>
+   
+  </div>
+</a>
+
+
 </div>
         </section>
 
@@ -1057,6 +1154,207 @@ in Mechanical Engineering</li>
       </div>
 </section>
 
+<!-- MILESTONE 7 – MVP -->
+<!-- MILESTONE 7 – MVP -->
+<section id="milestone7" class="py-16 anchor-offset">
+  <div class="max-w-5xl mx-auto space-y-8">
+
+    <!-- Заголовок -->
+    <header class="space-y-2">
+      <h3 class="text-3xl font-bold text-dark-text">Milestone 7 — Minimum Viable Product (MVP)</h3>
+      
+    </header>
+
+    <!-- КАРУСЕЛЬ СКРИНОВ -->
+    <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 md:p-6">
+      <div class="relative w-full h-[22rem] md:h-[28rem] overflow-hidden rounded-xl bg-gray-900">
+
+        <!-- СЛАЙДЫ (замени src на свои JPEG) -->
+        <img src="mil7.jpg"
+             alt="MVP – Product page"
+             class="m7-slide absolute inset-0 w-full h-full object-contain bg-black opacity-100 transition-opacity duration-700 ease-in-out">
+        <img src="mil71.JPG"
+             alt="MVP – Cart page"
+             class="m7-slide absolute inset-0 w-full h-full object-contain bg-black opacity-0 transition-opacity duration-700 ease-in-out">
+        <img src="mil72.JPG"
+             alt="MVP – Checkout page"
+             class="m7-slide absolute inset-0 w-full h-full object-contain bg-black opacity-0 transition-opacity duration-700 ease-in-out">
+        <img src="mil73.JPG"
+             alt="MVP – Order confirmation"
+             class="m7-slide absolute inset-0 w-full h-full object-contain bg-black opacity-0 transition-opacity duration-700 ease-in-out">
+        <img src="mil74.JPG"
+             alt="MVP – Order confirmation"
+             class="m7-slide absolute inset-0 w-full h-full object-contain bg-black opacity-0 transition-opacity duration-700 ease-in-out">
+        <img src="mil75.JPG"
+             alt="MVP – Order confirmation"
+             class="m7-slide absolute inset-0 w-full h-full object-contain bg-black opacity-0 transition-opacity duration-700 ease-in-out">
+        <img src="mil76.JPG"
+             alt="MVP – Order confirmation"
+             class="m7-slide absolute inset-0 w-full h-full object-contain bg-black opacity-0 transition-opacity duration-700 ease-in-out">
+        <img src="mil77.JPG"
+             alt="MVP – Order confirmation"
+             class="m7-slide absolute inset-0 w-full h-full object-contain bg-black opacity-0 transition-opacity duration-700 ease-in-out">
+
+      </div>
+
+      <!-- ТОЧКИ ПОД СЛАЙДЕРОМ -->
+      <div id="m7-dots" class="flex justify-center mt-4 space-x-2"></div>
+    </div>
+
+    <!-- МЕСТО ДЛЯ ОПИСАНИЯ (ТЫ ПОТОМ ИЗМЕНИШЬ ТЕКСТ) -->
+    <section class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 md:p-8 space-y-4">
+      <h4 class="text-2xl font-semibold text-dark-text">MVP explanation & justification</h4>
+      <p class="text-gray-700">
+        Minimum Viable Product (MVP)
+
+The goal of SilkRoad’s MVP stage was to validate whether Romanian consumers demonstrate real interest and willingness to purchase textile and leather products sourced from Turkmenistan. At this stage we do not aim to prove retention or scalability; instead, the main objective is to confirm the value of the core idea and evaluate early purchasing intent.
+
+To achieve this, we built the minimum set of features that enable a realistic shopping experience. The MVP allows users to browse products, understand pricing, evaluate perceived quality, and proceed to checkout simulation. These elements are sufficient to observe user reactions without implementing full infrastructure such as payment, logistics or inventory systems.
+
+Scope of the MVP
+
+The MVP currently includes:
+
+Product catalog with categories (denim, leather, footwear, home textiles)
+
+Product detail pages with material composition and origin
+
+Transparent pricing with VAT included
+
+Add-to-cart functionality
+
+Checkout simulation with payment preview
+
+Optional account creation
+
+Brand positioning and sourcing story
+
+This setup allows us to test the basic buying journey, which is the most critical part of the business model. If users are willing to add items to their cart and move toward checkout, this indicates a meaningful level of purchase intent.
+
+Validation Rationale
+
+Before implementation, earlier milestones (M2, M5, M6) confirmed that consumers evaluate imported textile and leather products based on four primary dimensions:
+
+Product quality and materials
+
+Price positioning relative to competitors (Trendyol, Temu, Shein, LC Waikiki)
+
+Trust, credibility and origin
+
+Convenience of ordering
+
+The MVP was designed to directly test these components and capture initial willingness-to-buy signals.
+      </p>
+
+     
+    </section>
+
+  </div>
+</section>
+
+<!-- MILESTONE 8 – First Sale & User Feedback -->
+<section id="milestone8" class="py-16 anchor-offset">
+  <div class="max-w-5xl mx-auto space-y-8">
+
+    <!-- Заголовок -->
+    <header class="space-y-2">
+      <h3 class="text-3xl font-bold text-dark-text">Milestone 8 — First Sale & User Feedback</h3>
+      <p class="text-gray-700">
+        In this milestone we put the SILKROAD MVP in front of real users. Below are vertical screenshots of
+        WhatsApp conversations where early users gave feedback and expressed interest in buying our products.
+      </p>
+    </header>
+
+    <!-- ВАРИАНТ РАЗМЕЩЕНИЯ СКРИНОВ: 2×2 СЕТКА ДЛЯ ВЕРТИКАЛЬНЫХ КАРТИНОК -->
+    <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 md:p-6">
+      <h4 class="text-xl font-semibold text-dark-text mb-4">User conversations (WhatsApp screenshots)</h4>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+     
+        <div class="border border-gray-200 rounded-xl overflow-hidden bg-gray-50 flex items-center justify-center">
+          <img src="mil8.jpeg" alt="User feedback 1" class="w-full h-full object-contain">
+        </div>
+        <div class="border border-gray-200 rounded-xl overflow-hidden bg-gray-50 flex items-center justify-center">
+          <img src="mil81.jpeg" alt="User feedback 2" class="w-full h-full object-contain">
+        </div>
+        <div class="border border-gray-200 rounded-xl overflow-hidden bg-gray-50 flex items-center justify-center">
+          <img src="mil82.jpeg" alt="User feedback 3" class="w-full h-full object-contain">
+        </div>
+        <div class="border border-gray-200 rounded-xl overflow-hidden bg-gray-50 flex items-center justify-center">
+          <img src="mil83.jpeg" alt="User feedback 4" class="w-full h-full object-contain">
+        </div>
+        <div class="border border-gray-200 rounded-xl overflow-hidden bg-gray-50 flex items-center justify-center">
+          <img src="mil84.jpeg" alt="User feedback 4" class="w-full h-full object-contain">
+        </div>
+      </div>
+
+      <!-- Если хочешь вместо сетки сделать одну большую картинку, можно оставить только один <img> и убрать grid. -->
+    </div>
+
+    <!-- MILESTONE 8: ОБЪЯСНЕНИЕ + ВЫВОДЫ -->
+    <section class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 md:p-8 space-y-4">
+      <h4 class="text-2xl font-semibold text-dark-text">What we learned from the first users</h4>
+
+      <p class="text-gray-700">
+      For this milestone we put our MVP in front of real users and asked them to interact with it honestly. We didn’t test retention or long-term usage yet — the only goal here was to check if people would actually consider buying and if the core value makes sense to them.
+<br>
+We shared the MVP privately through WhatsApp, since it is the fastest way for our target users to answer and ask questions. We also used WhatsApp to collect feedback and understand what would make people more confident to buy.
+<br>
+User Reactions
+<br>
+The overall impression was positive:<br>
+✔ Users liked the simplicity<br>
+✔ Products were understood<br>
+✔ Pricing was considered fair<br>
+✔ Denim and leather products got the strongest reaction<br>
+✔ Several users said they would consider buying once a few details are improved
+<br>
+Example comments from testers:<br>
+• “I’m excited about the leather boots and jeans. I will definitely buy them in the near future.”
+<br>
+• “I really like those classic shoes, I’m considering to buy them if I’m being honest.”
+<br>
+• “Your jeans fit in the same price category with LC Waikiki which is honestly surprising.”
+<br>
+• “If I had to buy something today, I’d choose the jeans.”
+<br>
+What Needed Improvement (According to Users)
+<br>
+Users were surprisingly detailed and specific. Main suggestions were:
+<br>
+• better product photos (higher quality + more angles)<br>
+• Romanian language option<br>
+• show fabric/material info more clearly<br>
+• size and color variations<br>
+• visible delivery expectations<br>
+• show products on a model for more confidence<br>
+• optional AI / outfit recommendations (future idea by one tester)<br>
+<br>
+These are not blockers — all are upgrade features that can increase trust and conversion rate.
+<br>
+Purchase Intent
+
+Even though we did not force anyone to buy, several testers explicitly said they would purchase later, and two users also asked about availability and delivery conditions.
+This is enough to validate that the MVP has real potential.
+<br>
+Key point:<br>
+The milestone was not about proving retention — just confirming that people actually want the product and are willing to pay. That target was achieved.
+<br>
+Conclusion
+<br>
+The MVP successfully validated:<br>
+✓ The value proposition makes sense to real users<br>
+✓ The pricing is acceptable for Romanian customers<br>
+✓ The strongest categories (so far) are denim & home textiles<br>
+✓ People are willing to consider buying — even without aggressive marketing<br>
+✓ Feedback gives us a clear path for the next milestone<br>
+      </p>
+
+     
+    </section>
+
+  </div>
+</section>
 
 
             
